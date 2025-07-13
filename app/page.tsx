@@ -14,7 +14,6 @@ export default function Home() {
     <>
     <Navbar/>
     <main>
-
     <SpaceScene/>
     <div className='w-full min-h-screen'>
         <HeroSection/>
