@@ -12,22 +12,22 @@ import AboutMe from './organisms/about';
 export default function Home() {
   return (
     <>
-    <Navbar/>
-    <main>
-    <SpaceScene/>
-    <div className='w-full min-h-screen'>
-        <HeroSection/>
-    </div>
-    <div>
-      <RunningText/>
-    </div>
-    <div>
-      <AboutMe/>
-    </div>
-    <div className='lg:min-h-screen flex items-center justify-center'>
-      <SkillGrid/>
-    </div>
-    </main>
+      <Navbar />
+      <main className="relative z-0">
+        <SpaceScene />
+        <div className="w-full min-h-screen">
+          <HeroSection />
+        </div>
+        <div>
+          <RunningText />
+        </div>
+        <div>
+          <AboutMe />
+        </div>
+        <div className="lg:min-h-screen flex items-center justify-center">
+          <SkillGrid />
+        </div>
+      </main>
     </>
   );
 }
