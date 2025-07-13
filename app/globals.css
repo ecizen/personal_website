@@ -20,6 +20,12 @@ body {
     0 0 20px #fff,
     0 0 40px #fff;
 }
+/* globals.css */
+html, body {
+  overflow-x: hidden;
+  overscroll-behavior-y: contain;
+}
+
 .glow-text {
   text-shadow:
     0 0 4px rgba(255,255,255,0.3),

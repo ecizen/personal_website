@@ -34,8 +34,9 @@ export default function SpaceScene() {
       className="
         fixed inset-0 z-[-1]
         overflow-hidden
-        max-h-screen max-w-screen
+        max-w-screen max-h-screen
         bg-gradient-to-b from-black via-[#0a0a1a] to-black
+        touch-none
       "
     >
       {/* Stars */}
@@ -85,7 +86,7 @@ export default function SpaceScene() {
             }}
             animate={{
               x: ['-12%', '110%'],
-              y: [`${startY}%`, `${Math.min(startY + 15, 90)}%`], // ← dibatasi agar tidak overflow
+              y: [`${startY}%`, `${Math.min(startY + 10, 90)}%`], // <-- penting
               opacity: [0, 1, 0],
               width: ['100px', '30px', '0px'],
             }}
