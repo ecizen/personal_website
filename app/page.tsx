@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="relative z-0">
+      <main className="relative z-0 p-0">
         <SpaceScene />
         <div className="w-full min-h-screen">
           <HeroSection />
