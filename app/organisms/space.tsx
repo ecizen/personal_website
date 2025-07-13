@@ -24,9 +24,7 @@ export default function SpaceScene() {
     y: useTransform(mouseY, [0, dimensions.height], [-15 * speed, 15 * speed]),
   }));
 
-  // Scroll-based subtle vertical parallax and scale
- const scrollParallax = useTransform(scrollY, [0, 600], [0, -15], { clamp: true });
-const scrollScale = useTransform(scrollY, [0, 600], [1, 1.05], { clamp: true });
+
 
   // Generate stars once
   const stars = useMemo(() => {
@@ -123,7 +121,7 @@ const scrollScale = useTransform(scrollY, [0, 600], [1, 1.05], { clamp: true });
     y: [0, 18, 0],
     opacity: [0.05, 0.12, 0.05],
   }}
-  style={{ y: scrollParallax, scale: scrollScale, willChange: 'transform, opacity' }}
+  
   transition={{
     duration: 45,
     repeat: Infinity,
@@ -172,7 +170,7 @@ const scrollScale = useTransform(scrollY, [0, 600], [1, 1.05], { clamp: true });
             'radial-gradient(ellipse 600px 100px at center, rgba(200, 180, 255, 0.07) 0%, transparent 70%)',
           transform: 'rotate(15deg) scaleY(0.15)',
           ...getParallax(0.1),
-          y: scrollParallax,
+          
           willChange: 'transform, opacity',
         }}
       />
@@ -190,7 +188,7 @@ const scrollScale = useTransform(scrollY, [0, 600], [1, 1.05], { clamp: true });
           repeat: Infinity,
           repeatType: 'reverse',
         }}
-        style={{ y: scrollParallax, willChange: 'transform, opacity' }}
+        // style={{ y: scrollParallax, willChange: 'transform, opacity' }}
       />
 
       {/* Light flares */}
