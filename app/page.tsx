@@ -9,26 +9,31 @@ import RunningText from './organisms/text';
 import SkillGrid from './organisms/skill';
 import "./globals.css";
 import AboutMe from './organisms/about';
-import FixedScreenWrapper from './organisms/fixed';
+import Projects from './organisms/project';
+import Certificate from './organisms/certificates';
 export default function Home() {
   return (
     <>
       <Navbar />
-      <FixedScreenWrapper>
         <SpaceScene />
-      </FixedScreenWrapper>
-      <main className="relative z-0 p-0 overflow-hidden">
-        <div className="w-full min-h-screen">
+      <main className="relative z-0 p-0">
+        <div className="">
           <HeroSection />
         </div>
         <div>
           <RunningText />
         </div>
-        <div>
+        <div id='about'>
           <AboutMe />
         </div>
-        <div className="lg:min-h-screen flex items-center justify-center">
+        <div id='skills' className="lg:min-h-screen flex items-center justify-center">
           <SkillGrid />
+        </div>
+        <div>
+          <Projects/>
+        </div>
+        <div>
+          <Certificate/>
         </div>
       </main>
     </>
