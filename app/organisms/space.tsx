@@ -6,7 +6,6 @@ import { useEffect, useState, useMemo } from 'react';
 export default function SpaceScene() {
   const [isMounted, setIsMounted] = useState(false);
 
-  // Layer speeds hanya untuk efek twinkle/shooting star timing
   const starColors = ['#ffffff', '#dbefff', '#c2dfff', '#a0c4ff'];
 
   const stars = useMemo(() => {
@@ -31,7 +30,14 @@ export default function SpaceScene() {
   if (!isMounted) return null;
 
   return (
-    <div className="fixed inset-0 bg-gradient-to-b from-black via-[#0a0a1a] to-black z-[-1] overflow-hidden">
+    <div
+      className="
+        fixed inset-0 z-[-1]
+        overflow-hidden
+        max-h-screen max-w-screen
+        bg-gradient-to-b from-black via-[#0a0a1a] to-black
+      "
+    >
       {/* Stars */}
       {stars.map((star) => (
         <motion.div
@@ -65,12 +71,12 @@ export default function SpaceScene() {
 
       {/* Shooting Stars */}
       {Array.from({ length: 3 }).map((_, i) => {
-        const startY = Math.random() * 45 + 10;
+        const startY = Math.random() * 40 + 10;
         return (
           <motion.div
             key={`shooting-${i}`}
             className="absolute h-[2px] bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none rounded-sm"
-            style={{ width: 120 }}
+            style={{ width: 100 }}
             initial={{
               x: '-12%',
               y: `${startY}%`,
@@ -79,9 +85,9 @@ export default function SpaceScene() {
             }}
             animate={{
               x: ['-12%', '110%'],
-              y: [`${startY}%`, `${startY + 30}%`],
+              y: [`${startY}%`, `${Math.min(startY + 15, 90)}%`], // ← dibatasi agar tidak overflow
               opacity: [0, 1, 0],
-              width: ['120px', '25px', '0px'],
+              width: ['100px', '30px', '0px'],
             }}
             transition={{
               duration: 2.8,
