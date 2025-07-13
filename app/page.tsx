@@ -11,13 +11,14 @@ import "./globals.css";
 import AboutMe from './organisms/about';
 import Projects from './organisms/project';
 import Certificate from './organisms/certificates';
+import ContactMe from './organisms/Contact';
 export default function Home() {
   return (
     <>
       <Navbar />
         <SpaceScene />
       <main className="relative z-0 p-0">
-        <div className="">
+        <div id='hero' className="">
           <HeroSection />
         </div>
         <div>
@@ -29,11 +30,14 @@ export default function Home() {
         <div id='skills' className="lg:min-h-screen flex items-center justify-center">
           <SkillGrid />
         </div>
-        <div>
+        <div id='projects'>
           <Projects/>
         </div>
-        <div>
+        <div id='certificate'>
           <Certificate/>
+        </div>
+        <div id='contact'>
+          <ContactMe/>
         </div>
       </main>
     </>
