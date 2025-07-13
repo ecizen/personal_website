@@ -14,18 +14,21 @@ export default function Home() {
     <>
       <Navbar />
       <main className="relative z-0 p-0">
-        <SpaceScene />
         <div className="w-full min-h-screen">
+          <SpaceScene />
           <HeroSection />
         </div>
         <div>
+          <SpaceScene />
           <RunningText />
         </div>
         <div>
           <AboutMe />
+          <SpaceScene />
         </div>
         <div className="lg:min-h-screen flex items-center justify-center">
           <SkillGrid />
+          <SpaceScene />
         </div>
       </main>
     </>
