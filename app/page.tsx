@@ -9,12 +9,15 @@ import RunningText from './organisms/text';
 import SkillGrid from './organisms/skill';
 import "./globals.css";
 import AboutMe from './organisms/about';
+import FixedScreenWrapper from './organisms/fixed';
 export default function Home() {
   return (
     <>
       <Navbar />
+      <FixedScreenWrapper>
         <SpaceScene />
-      <main className="relative z-0 p-0">
+      </FixedScreenWrapper>
+      <main className="relative z-0 p-0 overflow-hidden">
         <div className="w-full min-h-screen">
           <HeroSection />
         </div>

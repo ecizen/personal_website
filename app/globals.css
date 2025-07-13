@@ -12,6 +12,7 @@ body {
   background-color: black;
   overflow-x: hidden;
   font-family: var(--font-poppins);
+   overscroll-behavior-y: none;
 }
 .glow-white {
   text-shadow:

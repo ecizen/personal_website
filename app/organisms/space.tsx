@@ -32,12 +32,14 @@ export default function SpaceScene() {
   return (
     <div
       className="
-        fixed inset-0 z-[-1]
-        overflow-hidden
-        max-w-screen max-h-screen
+        fixed inset-0 z-[-1] overflow-hidden touch-none
         bg-gradient-to-b from-black via-[#0a0a1a] to-black
-        touch-none
       "
+      style={{
+        contain: 'strict',
+        clipPath: 'inset(0% 0% 0% 0%)',
+        WebkitMaskImage: '-webkit-radial-gradient(white, black)',
+      }}
     >
       {/* Stars */}
       {stars.map((star) => (
@@ -86,7 +88,7 @@ export default function SpaceScene() {
             }}
             animate={{
               x: ['-12%', '110%'],
-              y: [`${startY}%`, `${Math.min(startY + 10, 90)}%`], // <-- penting
+              y: [`${startY}%`, `${Math.min(startY + 10, 90)}%`],
               opacity: [0, 1, 0],
               width: ['100px', '30px', '0px'],
             }}
