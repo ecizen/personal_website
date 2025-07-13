@@ -25,7 +25,7 @@ export default function Home() {
     <div>
       <AboutMe/>
     </div>
-    <div className='min-h-screen flex items-center justify-center'>
+    <div className='lg:min-h-screen flex items-center justify-center'>
       <SkillGrid/>
     </div>
     </main>

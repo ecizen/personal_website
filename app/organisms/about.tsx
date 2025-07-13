@@ -42,7 +42,7 @@ const AboutMe = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden  flex items-center justify-center px-6 py-24">
+    <section className="relative min-h-screen w-full overflow-hidden  flex items-center justify-center px-6 lg:py-24 py-12">
 
       <div className="absolute inset-0 bg-[radial-gradient(#ffffff0d_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none z-0" />
       <div className="absolute top-[10%] left-[5%] w-[300px] h-[300px] bg-purple-400/10 blur-[100px] rounded-full" />
