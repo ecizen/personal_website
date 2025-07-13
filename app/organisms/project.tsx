@@ -93,7 +93,7 @@ const Projects = () => {
             onClick={() => setShowAll(!showAll)}
             className="flex items-center px-6 py-2 bg-neutral-950 rounded-md hover:bg-neutral-800 transition"
           >
-            <p className="text-xs">
+            <p className="text-xs text-white">
               {showAll ? "Show Less" : "All Projects"}
             </p>
           </button>
