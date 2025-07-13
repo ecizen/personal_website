@@ -34,7 +34,7 @@ export default function SpaceScene() {
       className="
         fixed inset-0 z-[-1]
         overflow-hidden
-        min-h-screen max-w-screen
+        max-h-screen max-w-screen
         bg-gradient-to-b from-black via-[#0a0a1a] to-black
       "
     >
