@@ -32,7 +32,7 @@ export default function SpaceScene() {
   return (
     <div
       className="
-        fixed inset-0 z-[-1] overflow-hidden touch-none
+        absolute inset-0 z-[-1] overflow-hidden touch-none
         bg-gradient-to-b from-black via-[#0a0a1a] to-black
       "
       style={{
