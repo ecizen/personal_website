@@ -12,9 +12,12 @@ import AboutMe from './organisms/about';
 import Projects from './organisms/project';
 import Certificate from './organisms/certificates';
 import ContactMe from './organisms/Contact';
+import ParticleHover from './organisms/particle-hover';
 export default function Home() {
+  
   return (
     <>
+    <ParticleHover/>
       <Navbar />
         <SpaceScene />
       <main className="relative z-0 p-0">

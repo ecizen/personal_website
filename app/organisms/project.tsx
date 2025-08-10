@@ -149,7 +149,7 @@ const Projects = () => {
                       UI UX Redesign
                     </button>
                     <button className="px-4 py-2 text-sm font-medium rounded-lg border border-white/10 text-white/80 hover:bg-white/10 transition">
-                      App Design
+                      Development
                     </button>
                   </div>
                 </div>
