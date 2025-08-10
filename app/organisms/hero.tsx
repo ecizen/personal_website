@@ -1,6 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
+import { useEffect } from 'react';
 
 const glowVariants: any = {
   flicker1: {
@@ -21,33 +22,43 @@ const glowTransition: any = {
   ease: 'easeInOut',
 };
 
-// Variabel animasi jatuh
-const dropIn = {
-  initial: { y: -100, opacity: 0, scale: 1.05 },
-  animate: {
-    y: 0,
-    opacity: 1,
-    scale: 1,
-    transition: {
-      type: 'spring',
-      stiffness: 120,
-      damping: 10,
-      duration: 0.8,
-    },
-  },
-};
-
 const HeroSection = () => {
+  const controls1 = useAnimation();
+  const controls2 = useAnimation();
+
+  useEffect(() => {
+    // Animasi dropIn lalu lanjut ke flicker
+    controls1.start({
+      y: 0,
+      opacity: 1,
+      transition: { type: 'spring', stiffness: 120, damping: 10, duration: 0.8 },
+    }).then(() => {
+      controls1.start({
+        ...glowVariants.flicker1,
+        transition: glowTransition,
+      });
+    });
+
+    controls2.start({
+      y: 0,
+      opacity: 1,
+      transition: { type: 'spring', stiffness: 120, damping: 10, delay: 0.15 },
+    }).then(() => {
+      controls2.start({
+        ...glowVariants.flicker3,
+        transition: glowTransition,
+      });
+    });
+  }, []);
+
   return (
     <section className="w-full h-screen py-12 flex flex-col items-center justify-center bg-transparent px-4 text-center overflow-hidden">
       
       {/* Judul pertama */}
       <motion.h1
         className="text-3xl md:text-5xl font-bold text-white uppercase"
-        variants={glowVariants}
-        animate={['flicker1', 'flicker2', 'flicker3']}
-        transition={glowTransition}
-        {...dropIn}
+        initial={{ y: -100, opacity: 0, scale: 1.05 }}
+        animate={controls1}
       >
         Transform
       </motion.h1>
@@ -55,20 +66,8 @@ const HeroSection = () => {
       {/* Judul kedua */}
       <motion.h1
         className="text-3xl md:text-5xl font-bold text-white"
-        variants={glowVariants}
-        animate={['flicker3', 'flicker1', 'flicker2']}
-        transition={glowTransition}
         initial={{ y: -120, opacity: 0 }}
-        animate={{
-          y: 0,
-          opacity: 1,
-          transition: {
-            type: 'spring',
-            stiffness: 120,
-            damping: 10,
-            delay: 0.15,
-          },
-        }}
+        animate={controls2}
       >
         FE DEVELOPER
       </motion.h1>
@@ -80,12 +79,7 @@ const HeroSection = () => {
         animate={{
           y: 0,
           opacity: 1,
-          transition: {
-            type: 'spring',
-            stiffness: 100,
-            damping: 12,
-            delay: 0.3,
-          },
+          transition: { type: 'spring', stiffness: 100, damping: 12, delay: 0.3 },
         }}
       >
         Crafting seamless and beautiful user experiences with passion and precision.
@@ -106,18 +100,12 @@ const HeroSection = () => {
         animate={{
           y: 0,
           opacity: 1,
-          transition: {
-            type: 'spring',
-            stiffness: 100,
-            damping: 10,
-            delay: 0.45,
-          },
+          transition: { type: 'spring', stiffness: 100, damping: 10, delay: 0.45 },
         }}
         variants={{
           hover: {
             scale: 1.07,
-            boxShadow:
-              '0 0 15px 4px rgba(255, 255, 255, 0.3), inset 0 0 15px rgba(255,255,255,0.2)',
+            boxShadow: '0 0 15px 4px rgba(255, 255, 255, 0.3), inset 0 0 15px rgba(255,255,255,0.2)',
             transition: { duration: 0.35, ease: 'easeInOut' },
           },
           tap: {
