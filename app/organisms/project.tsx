@@ -1,8 +1,9 @@
 'use client'
-import { ArrowUpRight, MoreHorizontal } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import images from "../assets/data";
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Project = [
   {
@@ -54,14 +55,6 @@ const Project = [
       "Landing page elegan untuk perusahaan travel global, dilengkapi animasi scroll, responsif di semua perangkat, dan optimasi SEO untuk promosi destinasi internasional.",
   },
   {
-    id: 7,
-    title: "Global Landing Page",
-    image: images.projetc6,
-    about: 'Travel Web',
-    deskription:
-      "Versi lain dari Global Landing Page dengan variasi layout dan konten yang lebih fokus pada user conversion dan storytelling visual untuk menarik pelanggan baru.",
-  },
-  {
     id: 8,
     title: "Jajan Yuk",
     image: images.projetc7,
@@ -77,18 +70,108 @@ const Project = [
     deskription:
       "Kalkulator sederhana berbasis web dengan antarmuka bersih dan fungsi dasar matematika seperti penjumlahan, pengurangan, perkalian, dan pembagian.",
   },
+  {
+    id: 10,
+    title: "Drum Machine",
+    image: images.project9,
+    about: 'Digital Drum',
+    deskription:
+      "Aplikasi drum digital berbasis web yang memungkinkan pengguna membuat ritme dan beat secara interaktif dengan suara drum yang realistis.",
+  },
+  {
+    id: 11,
+    title: "Random Quote",
+    image: images.project10,
+    about: 'Quote Generator',
+    deskription:
+      "Aplikasi web yang menampilkan kutipan inspiratif secara acak, cocok untuk motivasi harian dan refleksi singkat.",
+  },
+  {
+    id: 12,
+    title: "Kerjago",
+    image: images.project11,
+    about: 'Modern Job Portal',
+    deskription:
+      "Platform pencarian kerja modern yang membantu pencari kerja menemukan lowongan sesuai minat dan kualifikasi dengan antarmuka yang user-friendly.",
+  },
 ];
 
-const Projects = () => {
-    const [showAll, setShowAll] = useState(false);
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: 30 },
+};
 
+const Projects = () => {
+  const [showAll, setShowAll] = useState(false);
   const displayedProjects = showAll ? Project : Project.slice(0, 5);
 
   return (
     <div className="w-full lg:px-12 px-4 py-8 flex flex-col items-center">
       <div className="w-full lg:max-w-[75%]">
-        <div className="flex items-center justify-between">
-          <h1 className="text-xl text-white">Featured Projects</h1>
+        <h1 className="text-xl text-white mb-8">Featured Projects</h1>
+
+        <div className="grid grid-cols-1 gap-y-6">
+          <AnimatePresence>
+            {displayedProjects.map((item) => (
+              <motion.div
+                key={item.id}
+                className={`bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 shadow-xl ${
+                  item.id % 2 === 0 ? "md:flex-row-reverse" : ""
+                }`}
+                variants={cardVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                layout
+                transition={{ duration: 0.4, ease: "easeOut" }}
+              >
+                <div className="flex-1">
+                  <h3 className="text-white text-xl md:text-2xl font-semibold mb-2">
+                    {item.title} |{" "}
+                    <span className="text-purple-300">{item.about}</span>
+                  </h3>
+                  <p className="text-sm md:text-base text-white/80 mb-4 max-w-xl">
+                    {item.deskription}
+                  </p>
+
+                  {/* BUTTONS */}
+                  <div className="flex flex-wrap gap-3 mt-4">
+                    <a
+                      href="#"
+                      target="_blank"
+                      className="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-[#3b31d1] text-white hover:bg-[#5045d5] transition"
+                    >
+                      Full project
+                      <ArrowUpRight size={16} />
+                    </a>
+                    <button className="px-4 py-2 text-sm font-medium rounded-lg border border-white/10 text-white/80 hover:bg-white/10 transition">
+                      UI UX Redesign
+                    </button>
+                    <button className="px-4 py-2 text-sm font-medium rounded-lg border border-white/10 text-white/80 hover:bg-white/10 transition">
+                      App Design
+                    </button>
+                  </div>
+                </div>
+
+                {/* RIGHT SIDE */}
+                <div className="flex-shrink-0 w-full md:w-[280px]">
+                  <div className="relative aspect-video w-full rounded-xl overflow-hidden">
+                    <Image
+                      src={item.image}
+                      alt="Project mockup"
+                      fill
+                      className="object-cover rounded-xl"
+                    />
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+
+        {/* Show All / Show Less Button */}
+        <div className="flex justify-center mt-10">
           <button
             onClick={() => setShowAll(!showAll)}
             className="flex items-center px-6 py-2 bg-neutral-950 rounded-md hover:bg-neutral-800 transition"
@@ -99,58 +182,8 @@ const Projects = () => {
           </button>
         </div>
       </div>
-
-      <div className="grid grid-cols-1 gap-y-0">
-        {displayedProjects.map((item) => (
-          <div
-            key={item.id}
-            className={`bg-white/5 mt-16 backdrop-blur-md border border-white/10 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 shadow-xl ${
-              item.id % 2 === 0 ? "md:flex-row-reverse" : ""
-            }`}
-          >
-            <div className="flex-1">
-              <h3 className="text-white text-xl md:text-2xl font-semibold mb-2">
-                {item.title} |{" "}
-                <span className="text-purple-300">{item.about}</span>
-              </h3>
-              <p className="text-sm md:text-base text-white/80 mb-4 max-w-xl">
-                {item.deskription}
-              </p>
-
-              {/* BUTTONS */}
-              <div className="flex flex-wrap gap-3 mt-4">
-                <a
-                  href="#"
-                  target="_blank"
-                  className="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg bg-[#3b31d1] text-white hover:bg-[#5045d5] transition"
-                >
-                  Full project
-                  <ArrowUpRight size={16} />
-                </a>
-                <button className="px-4 py-2 text-sm font-medium rounded-lg border border-white/10 text-white/80 hover:bg-white/10 transition">
-                  UI UX Redesign
-                </button>
-                <button className="px-4 py-2 text-sm font-medium rounded-lg border border-white/10 text-white/80 hover:bg-white/10 transition">
-                  App Design
-                </button>
-              </div>
-            </div>
-
-            {/* RIGHT SIDE */}
-            <div className="flex-shrink-0 w-full md:w-[280px]">
-              <div className="relative aspect-video w-full rounded-xl overflow-hidden">
-                <Image
-                  src={item.image}
-                  alt="Project mockup"
-                  fill
-                  className="object-cover rounded-xl"
-                />
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
     </div>
   );
 };
+
 export default Projects;

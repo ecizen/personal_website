@@ -7,6 +7,9 @@ import projetc5 from '../assets/nft.png'
 import projetc6 from '../assets/global.png' 
 import projetc7 from '../assets/jajanyuk.png' 
 import projetc8 from '../assets/kalkulator.png' 
+import project9 from '../assets/drum.png'
+import project10 from '../assets/qout.png'
+import project11 from '../assets/kerjago.png'
 import certifcate1 from '../assets/certificate1.jpeg'
 import certifcate2 from '../assets/certificate2.jpeg'
 import certifcate3 from '../assets/certificate3.jpeg'
@@ -27,6 +30,9 @@ const images = {
     projetc6,
     projetc7,
     projetc8,
+    project9,
+    project10,
+    project11,
     certifcate1,
     certifcate2,
     certifcate3,
